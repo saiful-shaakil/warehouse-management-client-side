@@ -13,14 +13,14 @@ const Login = () => {
           class="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div class="space-y-1 text-sm">
-            <label for="username" class="block">
-              Username
+            <label for="email" class="block">
+              Email
             </label>
             <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
               class="w-full px-4 py-3 rounded-md"
             />
           </div>
@@ -81,7 +81,7 @@ const Login = () => {
         </div>
         <p class="text-xs text-center sm:px-6">
           Don't have an account?
-          <Link rel="noopener noreferrer" to="/" class="underline">
+          <Link rel="noopener noreferrer" to="/register" class="underline">
             Sign up
           </Link>
         </p>
