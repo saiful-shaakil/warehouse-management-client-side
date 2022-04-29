@@ -25,7 +25,7 @@ const Banner = () => {
             type="text"
             placeholder="Type Model Here"
           />
-          <span className="cursor-pointer">Search</span>
+          <span className="cursor-pointer text-white">Search</span>
         </div>
       </div>
     </div>
