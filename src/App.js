@@ -5,7 +5,8 @@ import Footer from "./Components/Footer/Footer";
 import Login from "./Components/User/Login/Login";
 import Register from "./Components/User/Register/Register";
 import NotFound from "./Components/OtherPages/NotFound/NotFound";
-import Loading from "./Components/OtherPages/Loading/Loading";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+
+      <ToastContainer />
     </div>
   );
 }
