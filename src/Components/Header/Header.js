@@ -5,13 +5,6 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const Links = [
-    { name: "Home", link: "/" },
-    { name: "Laptop", link: "/laptop" },
-    { name: "Blogs", link: "/blogs" },
-    { name: "About Us", link: "/aboutUs" },
-    { name: "Login", link: "/login" },
-  ];
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
       <div className="md:flex items-center justify-between bg-gray-700 py-4 md:px-10 px-7">
@@ -32,16 +25,46 @@ const Header = () => {
             open ? "top-20" : "top-[-490px]"
           }`}
         >
-          {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <Link
-                className="text-white hover:text-gray-400 duration-500"
-                to={link.link}
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <Link
+              className="text-white hover:text-gray-400 duration-500"
+              to="/"
+            >
+              Home
+            </Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <Link
+              className="text-white hover:text-gray-400 duration-500"
+              to="/laptop"
+            >
+              Laptop
+            </Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <Link
+              className="text-white hover:text-gray-400 duration-500"
+              to="/blogs"
+            >
+              Blogs
+            </Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <Link
+              className="text-white hover:text-gray-400 duration-500"
+              to="/aboutUs"
+            >
+              About Us
+            </Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <Link
+              className="text-white hover:text-gray-400 duration-500"
+              to="/login"
+            >
+              Login
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

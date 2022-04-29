@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import Loading from "../../OtherPages/Loading/Loading";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   //sign in with google
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, userOfGoog, loadingOfGoog, errorOfGoog] =
+    useSignInWithGoogle(auth);
+  //sign in by email and password
+  const [
+    signInWithEmailAndPassword,
+    userOfEmail,
+    loadingOfEmail,
+    errorOfEmail,
+  ] = useSignInWithEmailAndPassword(auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   //show loading
-  if (loading) {
+  if (loadingOfGoog || loadingOfEmail) {
     return <Loading></Loading>;
   }
   //onclick
@@ -17,11 +31,23 @@ const Login = () => {
     signInWithGoogle();
   };
 
+  //sign in by email and password]
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEmail(e.target.email.value);
+    setPassword(e.target.password.value);
+    signInWithEmailAndPassword(email, password);
+  };
+
   return (
     <div className="w-screen login-form">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl">
         <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
+        >
           <div className="space-y-1 text-sm">
             <label htmlFor="email" className="block">
               Email
@@ -51,9 +77,11 @@ const Login = () => {
               </Link>
             </div>
           </div>
-          <button className="block w-full p-3 text-center bg-gray-700 text-white hover:bg-gray-600 rounded-sm">
-            Sign in
-          </button>
+          <input
+            value="Sign In"
+            type="submit"
+            className="block w-full p-3 text-center bg-gray-700 text-white hover:bg-gray-600 rounded-sm"
+          />
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16"></div>
