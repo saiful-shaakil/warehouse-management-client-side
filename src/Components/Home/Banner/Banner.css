@@ -19,6 +19,9 @@
   border-radius: 7px;
   height: 36px;
 }
+.search-bar select:focus {
+  outline: none;
+}
 .search-bar input {
   width: 350px;
   height: 36px;
