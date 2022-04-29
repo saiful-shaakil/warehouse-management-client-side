@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import auth from "../../../firebase.init";
 import {
   useSendPasswordResetEmail,
@@ -19,13 +19,15 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, error] =
     useSendPasswordResetEmail(auth);
   //sign in by email and password
-
   const [
     signInWithEmailAndPassword,
     userOfEmail,
     loadingOfEmail,
     errorOfEmail,
   ] = useSignInWithEmailAndPassword(auth);
+  const navigate = useState("");
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //show loading
@@ -43,9 +45,16 @@ const Login = () => {
     e.preventDefault();
     setEmail(e.target.email.value);
     setPassword(e.target.password.value);
-    signInWithEmailAndPassword(email, password);
+    if (email && password) {
+      signInWithEmailAndPassword(email, password);
+      navigate(from, { replace: true });
+    }
   };
+  //send password reset email
   const handlePasswordReset = async () => {
+    if (email === "") {
+      toast("Please fill the email input to reset password.");
+    }
     if (email) {
       await sendPasswordResetEmail(email);
       toast("Password Reset Email sent.");
