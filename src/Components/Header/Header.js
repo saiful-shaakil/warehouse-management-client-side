@@ -10,7 +10,7 @@ const Header = () => {
     { name: "Laptop", link: "/laptop" },
     { name: "Blogs", link: "/" },
     { name: "About Us", link: "/" },
-    { name: "LOGIN", link: "/" },
+    { name: "Login", link: "/" },
   ];
   return (
     <div className="shadow-md w-full fixed top-0 left-0">

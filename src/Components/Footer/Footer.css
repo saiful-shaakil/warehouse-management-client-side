@@ -1,0 +1,12 @@
+.footer {
+  background-color: black;
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.logo {
+  width: 200px;
+}
+.copy {
+  margin-top: 65px;
+}
