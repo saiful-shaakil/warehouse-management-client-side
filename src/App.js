@@ -5,6 +5,7 @@ import Footer from "./Components/Footer/Footer";
 import Login from "./Components/User/Login/Login";
 import Register from "./Components/User/Register/Register";
 import NotFound from "./Components/OtherPages/NotFound/NotFound";
+import Loading from "./Components/OtherPages/Loading/Loading";
 
 function App() {
   return (
