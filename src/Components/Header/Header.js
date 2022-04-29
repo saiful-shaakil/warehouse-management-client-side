@@ -2,9 +2,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { faLaptop, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "../OtherPages/Loading/Loading";
 
 const Header = () => {
+  const [user, loading, error] = useAuthState(auth);
   const [open, setOpen] = useState(false);
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="shadow-md w-full fixed top-0 left-0">
       <div className="md:flex items-center justify-between bg-gray-700 py-4 md:px-10 px-7">
@@ -60,9 +67,9 @@ const Header = () => {
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <Link
               className="text-white hover:text-gray-400 duration-500"
-              to="/login"
+              to={user ? "/profile" : "/login"}
             >
-              Login
+              {user ? user.displayName : "Login"}
             </Link>
           </li>
         </ul>

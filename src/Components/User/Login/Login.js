@@ -3,17 +3,23 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import Loading from "../../OtherPages/Loading/Loading";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Login = () => {
   //sign in with google
   const [signInWithGoogle, userOfGoog, loadingOfGoog, errorOfGoog] =
     useSignInWithGoogle(auth);
+  //send password reset email
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
   //sign in by email and password
+
   const [
     signInWithEmailAndPassword,
     userOfEmail,
@@ -39,7 +45,12 @@ const Login = () => {
     setPassword(e.target.password.value);
     signInWithEmailAndPassword(email, password);
   };
-
+  const handlePasswordReset = async () => {
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Password Reset Email sent.");
+    }
+  };
   return (
     <div className="w-screen login-form">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl">
@@ -72,9 +83,7 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md"
             />
             <div className="flex justify-end text-xs">
-              <Link rel="noopener noreferrer" to="/">
-                Forgot Password?
-              </Link>
+              <button onClick={handlePasswordReset}>Forgot Password?</button>
             </div>
           </div>
           <input
