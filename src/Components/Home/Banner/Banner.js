@@ -23,7 +23,7 @@ const Banner = () => {
           <input
             className="text-white"
             type="text"
-            placeholder="Type Model Here"
+            placeholder="Type Your Desire Model Here"
           />
           <span className="cursor-pointer text-white">Search</span>
         </div>
