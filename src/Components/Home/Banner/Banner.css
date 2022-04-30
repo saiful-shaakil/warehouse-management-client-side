@@ -2,11 +2,12 @@
   background: url("https://i.ibb.co/4m0y4cq/banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 90vh;
+  height: 92vh;
   background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   flex-direction: column;
 }
 .search-bar {

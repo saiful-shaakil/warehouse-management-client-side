@@ -1,14 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { faLaptop, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "../OtherPages/Loading/Loading";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut(auth);
+    navigate("/");
+  };
   if (loading) {
     return <Loading></Loading>;
   }
@@ -23,7 +30,7 @@ const Header = () => {
         </div>
         <div
           onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-3 cursor-pointer md:hidden"
+          className="text-3xl text-white absolute right-8 top-3 cursor-pointer md:hidden"
         >
           <FontAwesomeIcon icon={open ? faXmark : faBars} />
         </div>
@@ -56,20 +63,30 @@ const Header = () => {
               Blogs
             </Link>
           </li>
+          {user ? (
+            <li className="md:ml-8 text-xl md:my-0 my-7">
+              <Link
+                className="text-white hover:text-gray-400 duration-500"
+                to="/profile"
+              >
+                {user?.displayName}
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <Link
               className="text-white hover:text-gray-400 duration-500"
-              to="/aboutUs"
+              to={user ? "/" : "/login"}
             >
-              About Us
-            </Link>
-          </li>
-          <li className="md:ml-8 text-xl md:my-0 my-7">
-            <Link
-              className="text-white hover:text-gray-400 duration-500"
-              to={user ? "/profile" : "/login"}
-            >
-              {user ? user.displayName : "Login"}
+              {user ? (
+                <button onClick={handleSignOut} type="button">
+                  Sign Out
+                </button>
+              ) : (
+                "Login"
+              )}
             </Link>
           </li>
         </ul>

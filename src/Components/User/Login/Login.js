@@ -37,6 +37,7 @@ const Login = () => {
   //onclick
   const signInByGoogle = () => {
     signInWithGoogle();
+    navigate(from, { replace: true });
   };
 
   //sign in by email and password]

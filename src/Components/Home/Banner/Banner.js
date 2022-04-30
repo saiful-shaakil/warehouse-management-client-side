@@ -14,7 +14,7 @@ const Banner = () => {
             <select name="brand" className="bg-black text-white" id="">
               <option value="MacBook">Macbook</option>
               <option value="Hp">Hp</option>
-              <option value="Accer">Accer</option>
+              <option value="Accer">Acer</option>
               <option value="Lenovo">Lenovo</option>
               <option value="Dell">Dell</option>
               <option value="Huawei">Huawei</option>
