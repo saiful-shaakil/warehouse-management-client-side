@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
-  console.log(user);
 
   const handleSignOut = () => {
     signOut(auth);
