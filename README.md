@@ -1,6 +1,6 @@
 ## Live Website Link
 
-[https://warehouse-management-a7690.web.app/](Click Here) to visit the website.
+[Click Here](https://warehouse-management-a7690.web.app/) to visit the website.
 
 ## About Website
 
