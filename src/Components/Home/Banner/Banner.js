@@ -6,7 +6,7 @@ const Banner = () => {
     <div className="banner">
       <div className="text-center text-white font-semibold font-sans">
         <h1 className="text-4xl mb-4">WE HAVE EVERYTHING</h1>
-        <h1 className="text-7xl">WHAT YOUR LAPTOP NEEDS!</h1>
+        <h1 className="text-7xl">WHAT LAPTOP YOU NEEDS!</h1>
       </div>
       <div className="mt-4">
         <div className="flex items-center justify-center search-bar">

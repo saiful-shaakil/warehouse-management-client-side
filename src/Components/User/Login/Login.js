@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Login.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import {
   useSendPasswordResetEmail,
@@ -8,7 +8,6 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import Loading from "../../OtherPages/Loading/Loading";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -25,19 +24,25 @@ const Login = () => {
     loadingOfEmail,
     errorOfEmail,
   ] = useSignInWithEmailAndPassword(auth);
-  const navigate = useState("");
+  //to navigate the user
+  const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
+  const handleEmail = useRef("");
+  //to get the email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //show loading
   if (loadingOfGoog || loadingOfEmail) {
     return <Loading></Loading>;
   }
+  //to show the error
+  if (errorOfEmail || error) {
+    toast(errorOfEmail?.message, error?.message);
+  }
   //onclick
   const signInByGoogle = () => {
     signInWithGoogle();
-    navigate(from, { replace: true });
   };
 
   //sign in by email and password]
@@ -48,11 +53,15 @@ const Login = () => {
     setPassword(e.target.password.value);
     if (email && password) {
       signInWithEmailAndPassword(email, password);
-      navigate(from, { replace: true });
     }
   };
+  if (userOfGoog || userOfEmail) {
+    navigate(from, { replace: true });
+  }
   //send password reset email
-  const handlePasswordReset = async () => {
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
+    const email = handleEmail.current.value;
     if (email === "") {
       toast("Please fill the email input to reset password.");
     }
@@ -74,6 +83,7 @@ const Login = () => {
               Email
             </label>
             <input
+              ref={handleEmail}
               type="email"
               name="email"
               id="email"
