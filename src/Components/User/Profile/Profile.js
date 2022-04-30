@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import "./Profile.css";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -35,19 +35,21 @@ const Profile = () => {
           Sign Out
         </button>
         <br />
-        <button
+        <Link
+          to="/manage-inventories"
           type="button"
           className="px-8 py-3 font-semibold border rounded bg-gray-700 text-white mb-3"
         >
-          Manage Items
-        </button>
+          Manage Inventories
+        </Link>
         <br />
-        <button
+        <Link
+          to="/add-new-inventory"
           type="button"
           className="px-8 py-3 font-semibold border rounded bg-gray-700 text-white mb-3"
         >
-          Add Items
-        </button>
+          Add New Inventory
+        </Link>
         <br />
         <button
           type="button"

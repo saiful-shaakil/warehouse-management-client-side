@@ -52,7 +52,7 @@ const ManageItem = () => {
         sold: totalSold,
       })
       .then((res) => {
-        //console.log(res)
+        toast("Updaing Data.");
       })
       .catch((error) => {
         toast(error.message);

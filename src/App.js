@@ -14,6 +14,7 @@ import RequireAuth from "./Components/User/RequireAuth/RequireAuth";
 import ManageItem from "./Components/OtherPages/ManageItem/ManageItem";
 import ManageInventories from "./Components/OtherPages/ManageInventories/ManageInventories";
 import AddNewInventory from "./Components/OtherPages/AddNewInventory/AddNewInventory";
+import AllLaptop from "./Components/OtherPages/AllLaptop/AllLaptop";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/profile" element={<Profile></Profile>}></Route>
-        <Route path="/laptop" element={<Laptops></Laptops>}></Route>
+        <Route path="/laptop" element={<AllLaptop></AllLaptop>}></Route>
         <Route
           path="/laptop/:id"
           element={

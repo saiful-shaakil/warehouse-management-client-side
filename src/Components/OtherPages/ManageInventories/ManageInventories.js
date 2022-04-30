@@ -5,6 +5,7 @@ import "./ManageInventories.css";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const ManageInventories = () => {
   const [laptops, setLaptops] = useLaptops();
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const ManageInventories = () => {
         .then((data) => {
           let remain = laptops.filter((laptop) => id !== laptop._id);
           setLaptops(remain);
+          toast("Inventory Removed.");
         })
         .catch((error) => {
           console.log(error);
