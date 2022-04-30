@@ -4,9 +4,12 @@ import "./AddNewInventory.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 //to add new inventory
 const AddNewInventory = () => {
+  const [user, loading, error] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     if (data.name !== "" && data.model !== "" && data.quantity !== "") {
@@ -20,6 +23,7 @@ const AddNewInventory = () => {
           price: parseInt(data.price),
           quantity: parseInt(data.quantity),
           img: data.img,
+          email: user?.email,
         })
         .then((data) => {
           toast("New Inventory Added.");
@@ -97,7 +101,7 @@ const AddNewInventory = () => {
           <br />
           <div className="flex items-center">
             <input
-              className="px-8 py-3 mx-auto font-semibold border rounded bg-gray-700 text-white mb-3"
+              className="px-8 py-3 cursor-pointer mx-auto font-semibold border rounded bg-gray-700 text-white mb-3"
               type="submit"
               value="Add"
             />

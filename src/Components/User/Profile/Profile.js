@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import "./Profile.css";
@@ -51,12 +51,13 @@ const Profile = () => {
           Add New Inventory
         </Link>
         <br />
-        <button
+        <Link
+          to="/my-items"
           type="button"
           className="px-8 py-3 font-semibold border rounded bg-gray-700 text-white mb-3"
         >
           My Items
-        </button>
+        </Link>
       </div>
     </div>
   );

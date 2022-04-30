@@ -13,10 +13,8 @@ const ManageInventories = () => {
   const deleteInventoy = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {
-      fetch(`https://infinite-gorge-79896.herokuapp.com/laptop/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
+      axios
+        .delete(`https://infinite-gorge-79896.herokuapp.com/laptop/${id}`)
         .then((data) => {
           let remain = laptops.filter((laptop) => id !== laptop._id);
           setLaptops(remain);

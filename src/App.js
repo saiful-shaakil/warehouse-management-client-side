@@ -15,6 +15,7 @@ import ManageItem from "./Components/OtherPages/ManageItem/ManageItem";
 import ManageInventories from "./Components/OtherPages/ManageInventories/ManageInventories";
 import AddNewInventory from "./Components/OtherPages/AddNewInventory/AddNewInventory";
 import AllLaptop from "./Components/OtherPages/AllLaptop/AllLaptop";
+import UserAddedItems from "./Components/OtherPages/UserAddedItems/UserAddedItems";
 
 function App() {
   return (
@@ -47,6 +48,14 @@ function App() {
           element={
             <RequireAuth>
               <AddNewInventory></AddNewInventory>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/my-items"
+          element={
+            <RequireAuth>
+              <UserAddedItems></UserAddedItems>
             </RequireAuth>
           }
         ></Route>
