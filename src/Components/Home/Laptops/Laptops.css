@@ -1,6 +1,6 @@
 .laptop-collection {
   width: 80%;
-  margin: 100px auto;
+  margin: 100px auto 20px auto;
   display: grid;
   grid-template-columns: repeat(2, 600px);
   grid-gap: 20px;

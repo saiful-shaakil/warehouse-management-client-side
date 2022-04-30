@@ -12,6 +12,8 @@ import Blogs from "./Components/Blogs/Blogs";
 import Laptops from "./Components/Home/Laptops/Laptops";
 import RequireAuth from "./Components/User/RequireAuth/RequireAuth";
 import ManageItem from "./Components/OtherPages/ManageItem/ManageItem";
+import ManageInventories from "./Components/OtherPages/ManageInventories/ManageInventories";
+import AddNewInventory from "./Components/OtherPages/AddNewInventory/AddNewInventory";
 
 function App() {
   return (
@@ -28,6 +30,22 @@ function App() {
           element={
             <RequireAuth>
               <ManageItem></ManageItem>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manage-inventories"
+          element={
+            <RequireAuth>
+              <ManageInventories></ManageInventories>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/add-new-inventory"
+          element={
+            <RequireAuth>
+              <AddNewInventory></AddNewInventory>
             </RequireAuth>
           }
         ></Route>

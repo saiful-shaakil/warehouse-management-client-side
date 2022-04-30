@@ -1,5 +1,4 @@
 import React from "react";
-import hp from "../../../hp.svg";
 const TrustedSection = () => {
   return (
     <div>

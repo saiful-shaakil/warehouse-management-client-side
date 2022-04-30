@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./ManageItem.css";
 const ManageItem = () => {
   const { id } = useParams();
   const [laptop, setLaptop] = useState([]);
+  const navigate = useNavigate();
   //to get the laptop details
   const getItem = useRef();
   useEffect(() => {
@@ -59,6 +60,10 @@ const ManageItem = () => {
 
     window.location.reload();
   };
+  //to navigate the manage inventories
+  const handleManageInventories = () => {
+    navigate("/manage-inventories");
+  };
   return (
     <div className="manage-item">
       <div className="bg-grey-light py-8 w-full flex justify-center items-center">
@@ -93,7 +98,7 @@ const ManageItem = () => {
               </span>
             </div>
           </div>
-          <div className="p-6 text-grey-darker text-justify flex flex-row justify-between border-t">
+          <div className="p-6 text-grey-darker text-justify flex sm:flex-col lg:flex-row md:justify-between border-t">
             <button
               type="button"
               onClick={() => deliverItem(_id)}
@@ -101,13 +106,16 @@ const ManageItem = () => {
             >
               Deliver Now
             </button>
-            <div>
-              <input
-                ref={getItem}
-                className="h-12 w-60 border p-5 "
-                type="text"
-                placeholder="Enter the Product Quantity"
-              />
+            <div className="flex md:flex-row sm:flex-col sm:justify-center sm:items-center">
+              <div>
+                <input
+                  ref={getItem}
+                  className="h-12 w-60 border p-5 "
+                  type="text"
+                  placeholder="Enter the Product Quantity"
+                />
+              </div>{" "}
+              <br />
               <button
                 type="button"
                 className="px-8 py-3 font-semibold border rounded bg-gray-700 text-white mb-3"
@@ -118,6 +126,15 @@ const ManageItem = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex items-center">
+        <button
+          type="button"
+          className="px-8 py-3 mx-auto font-semibold border rounded bg-gray-700 text-white mb-3"
+          onClick={handleManageInventories}
+        >
+          Manage Inventories
+        </button>
       </div>
     </div>
   );
