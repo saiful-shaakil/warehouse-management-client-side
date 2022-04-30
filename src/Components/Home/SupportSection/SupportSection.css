@@ -1,0 +1,30 @@
+h2,
+h3 {
+  margin: 5px;
+}
+h2 {
+  width: 150px;
+  border-bottom: 2px solid black;
+}
+h3 {
+  width: 100px;
+  border-bottom: 2px solid gray;
+}
+h5 {
+  width: 40px;
+  margin: 10px 0;
+  border-bottom: 3px solid red;
+}
+.each-item {
+  width: 350px;
+  margin: 0 20px;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .all-items {
+    flex-direction: column;
+  }
+  .each-item {
+    margin: 20px 0;
+  }
+}

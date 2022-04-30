@@ -5,7 +5,24 @@
   grid-template-columns: repeat(2, 600px);
   grid-gap: 20px;
 }
-
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h2,
+h3 {
+  margin: 5px;
+}
+h2 {
+  border-bottom: 2px solid black;
+  width: 150px;
+}
+h3 {
+  border-bottom: 2px solid gray;
+  width: 100px;
+}
 @media (max-width: 640px) {
   .laptop-collection {
     grid-template-columns: 400px;
