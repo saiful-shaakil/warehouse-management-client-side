@@ -66,6 +66,18 @@ const Header = () => {
           {user ? (
             <li className="md:ml-8 text-xl md:my-0 my-7">
               <Link
+                to="/manage-inventories"
+                className="text-white hover:text-gray-400 duration-500"
+              >
+                Manage Inventories
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
+          {user ? (
+            <li className="md:ml-8 text-xl md:my-0 my-7">
+              <Link
                 className="text-white hover:text-gray-400 duration-500"
                 to="/profile"
               >
@@ -75,6 +87,7 @@ const Header = () => {
           ) : (
             ""
           )}
+
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <Link
               className="text-white hover:text-gray-400 duration-500"

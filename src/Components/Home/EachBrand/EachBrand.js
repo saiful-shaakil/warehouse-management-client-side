@@ -11,7 +11,7 @@ const EachBrand = ({ brand }) => {
       />
       <div className="flex flex-col justify-between p-6 space-y-8">
         <div className="space-y-2">
-          <h2 className="text-3xl font-semibold tracking-wide">{name}</h2>
+          <h1 className="text-3xl font-semibold tracking-wide">{name}</h1>
           <p className="dark:text-coolGray-100">{desc}</p>
         </div>
         <button

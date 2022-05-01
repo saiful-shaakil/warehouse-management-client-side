@@ -30,13 +30,12 @@ const ManageItem = () => {
           sold: soldItem,
         })
         .then((res) => {
-          //console.log(res);
+          toast("Updating Data");
+          window.location.reload();
         })
         .catch((error) => {
           toast(error.message);
         });
-
-      window.location.reload();
     } else {
       toast("Please input a valid number.");
     }
@@ -53,12 +52,11 @@ const ManageItem = () => {
       })
       .then((res) => {
         toast("Updaing Data.");
+        window.location.reload();
       })
       .catch((error) => {
         toast(error.message);
       });
-
-    window.location.reload();
   };
   //to navigate the manage inventories
   const handleManageInventories = () => {
