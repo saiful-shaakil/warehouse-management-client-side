@@ -20,6 +20,7 @@ const ManageItem = () => {
 
   //to update the stock items
   const updateStock = async (id) => {
+    toast("Updating Data");
     const item = parseInt(getItem.current.value);
     const totalQuantity = item + quantity;
     const soldItem = sold;
@@ -30,7 +31,6 @@ const ManageItem = () => {
           sold: soldItem,
         })
         .then((res) => {
-          toast("Updating Data");
           window.location.reload();
         })
         .catch((error) => {
@@ -42,6 +42,7 @@ const ManageItem = () => {
   };
   //to update the sold item
   const deliverItem = (id) => {
+    toast("Updaing Data");
     const totalSold = parseInt(sold) + 1;
     const remainQuantity = parseInt(quantity) - 1;
 
@@ -51,7 +52,6 @@ const ManageItem = () => {
         sold: totalSold,
       })
       .then((res) => {
-        toast("Updaing Data.");
         window.location.reload();
       })
       .catch((error) => {

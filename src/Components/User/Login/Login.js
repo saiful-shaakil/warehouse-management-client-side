@@ -10,7 +10,6 @@ import {
 } from "react-firebase-hooks/auth";
 import Loading from "../../OtherPages/Loading/Loading";
 import { toast } from "react-toastify";
-import axios from "axios";
 import useToken from "../../../Hooks/useToken/useToken";
 
 const Login = () => {
@@ -28,7 +27,7 @@ const Login = () => {
     errorOfEmail,
   ] = useSignInWithEmailAndPassword(auth);
   //to verify the user by token
-  const [tokenOfUser] = useToken(userOfEmail);
+  const [tokenOfUser] = useToken(userOfEmail || userOfGoog);
   //to navigate the user
   const navigate = useNavigate();
   const location = useLocation();
@@ -62,10 +61,10 @@ const Login = () => {
     if (email && password) {
       signInWithEmailAndPassword(email, password);
     }
-    if (userOfEmail || userOfGoog) {
-      navigate(from, { replace: true });
-    }
   };
+  if (userOfEmail) {
+    navigate(from, { replace: true });
+  }
   //send password reset email
   const handlePasswordReset = async (e) => {
     e.preventDefault();

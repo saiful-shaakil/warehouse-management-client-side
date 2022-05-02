@@ -30,6 +30,7 @@ const Register = () => {
     setEmail(e.target.email.value);
     setPass(e.target.password.value);
     setConfPass(e.target.confPassword.value);
+
     if (pass !== confPass) {
       toast("Sorry, password does not matched.");
     }
@@ -43,15 +44,18 @@ const Register = () => {
       }
       await createUserWithEmailAndPassword(email, pass);
       await updateProfile({ displayName: name });
-
-      if (user) {
-        navigate(from, { replace: true });
-      }
+      window.location.reload();
     }
     if (errorOfCreatingAcc || errorOfUpdatingName) {
       toast(errorOfCreatingAcc.message, errorOfUpdatingName.message);
     }
   };
+  if (loading) {
+    return <Loading></Loading>;
+  }
+  if (user) {
+    navigate(from, { replace: true });
+  }
   return (
     <div className="w-screen register-form">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl">
