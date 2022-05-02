@@ -2,3 +2,17 @@
   width: 80%;
   margin: 70px auto 100px auto;
 }
+@media (max-width: 640px) {
+  tr,
+  td,
+  th {
+    font-size: 5px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1200px) {
+  td,
+  tr,
+  th {
+    font-size: 18px;
+  }
+}

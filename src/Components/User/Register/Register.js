@@ -111,7 +111,7 @@ const Register = () => {
           <input
             type="submit"
             value="Sign Up"
-            className="block w-full p-3 text-center bg-gray-700 text-white hover:bg-gray-600 rounded-sm"
+            className="block w-full p-3 text-center cursor-pointer bg-gray-700 text-white hover:bg-gray-600 rounded-sm"
           />
         </form>
 

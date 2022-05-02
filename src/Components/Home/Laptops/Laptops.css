@@ -25,7 +25,7 @@ h3 {
 }
 @media (max-width: 640px) {
   .laptop-collection {
-    grid-template-columns: 400px;
+    grid-template-columns: 345px;
   }
 }
 @media (min-width: 640px) and (max-width: 1200px) {

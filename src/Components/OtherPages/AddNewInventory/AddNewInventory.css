@@ -8,3 +8,8 @@
   width: 450px;
   padding: 5px 10px;
 }
+@media (max-width: 640px) {
+  .form form input:not(:last-child) {
+    width: 320px;
+  }
+}

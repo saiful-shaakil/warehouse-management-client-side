@@ -64,7 +64,7 @@ const ManageInventories = () => {
           <tbody>
             {laptops.map((laptop) => (
               <tr key={laptop._id} className="text-gray-700">
-                <td className="border-2 p-4 dark:border-dark-5">
+                <td className="border-2 p-4 dark:border-dark-5 product_id">
                   {laptop._id}
                 </td>
                 <td className="border-2 p-4 dark:border-dark-5">

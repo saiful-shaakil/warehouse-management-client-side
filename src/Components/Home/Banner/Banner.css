@@ -40,3 +40,33 @@
   border-radius: 7px;
   height: 36px;
 }
+@media (max-width: 640px) {
+  .search-bar {
+    border: 1px solid black;
+    width: 270px;
+    border-radius: 7px;
+  }
+  .search-bar select {
+    padding: 5px 10px;
+    border-radius: 7px;
+    height: 36px;
+  }
+  .search-bar input {
+    width: 180px;
+    height: 36px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border-bottom: 2px solid red;
+  }
+  .search-bar span {
+    background-color: crimson;
+    padding: 5px 10px;
+    border-radius: 7px;
+    height: 36px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1200px) {
+  .laptop-collection {
+    grid-template-columns: 600px;
+  }
+}
