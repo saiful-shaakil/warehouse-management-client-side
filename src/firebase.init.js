@@ -6,8 +6,6 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  //I didn't add process.env in apiKey because when i try to add this, firebasee shows the error "auth/invalid-api-key"
-  // apiKey: "AIzaSyBbry4lrIPhVqmnHca9BRnVRjVvm-PXXY0",
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
   projectId: process.env.REACT_APP_projectId,

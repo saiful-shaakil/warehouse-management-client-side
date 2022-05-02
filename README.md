@@ -5,9 +5,9 @@
 ## About Website
 
 - Name : Warehouse Inventory Management
-- This is a website for a dealer of laptop. It is created by React Js. Mongodb and Node JS backend server implemented to this website.
+- This is a website for a dealer of laptop. It is created by React Js. Mongodb and Node JS backend server implemented to this website. once you log in this site you can see every products, add new products, and also what products you added will be in a different route.You can delete any product at any time.
 
-## What this website contain
+## What this website contains
 
 - This website has one navbar, one footer, one banner and 3 more section. Navbar contains Login,Home,Blogs,Laptop route.
 - You must be logged in to open the laptop route.
@@ -26,6 +26,7 @@
 - Tailwind CSS
 - React Firebase Hooks
 - Firebase
+- axios
 - Custom CSS
 
 ## Available Scripts
