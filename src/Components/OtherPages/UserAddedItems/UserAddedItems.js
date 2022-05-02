@@ -1,20 +1,37 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 
 const UserAddedItems = () => {
   const [user, loading, error] = useAuthState(auth);
   const [myItems, setMyItems] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
-    const email = user?.email;
-    fetch(`https://infinite-gorge-79896.herokuapp.com/my-items?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => setMyItems(data));
+    const getMyItems = async () => {
+      const email = user.email;
+      const url = `https://infinite-gorge-79896.herokuapp.com/my-items?email=${email}`;
+      try {
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("userToken")}`,
+          },
+        });
+        setMyItems(data);
+      } catch (error) {
+        if (error.response.status === 401 || error.response.status === 403) {
+          signOut(auth);
+          navigate("/login");
+          toast(error.message);
+        }
+      }
+    };
+    getMyItems();
   }, [user]);
 
   //to delete item

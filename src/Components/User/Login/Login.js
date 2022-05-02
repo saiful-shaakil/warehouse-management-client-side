@@ -3,12 +3,15 @@ import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import {
+  useAuthState,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import Loading from "../../OtherPages/Loading/Loading";
 import { toast } from "react-toastify";
+import axios from "axios";
+import useToken from "../../../Hooks/useToken/useToken";
 
 const Login = () => {
   //sign in with google
@@ -24,6 +27,8 @@ const Login = () => {
     loadingOfEmail,
     errorOfEmail,
   ] = useSignInWithEmailAndPassword(auth);
+  //to verify the user by token
+  const [tokenOfUser] = useToken(userOfEmail);
   //to navigate the user
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,19 +38,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //show loading
-  if (loadingOfGoog || loadingOfEmail) {
+  if (loadingOfGoog || loadingOfEmail || sending) {
     return <Loading></Loading>;
   }
   //to show the error
   if (errorOfEmail || error) {
     toast(errorOfEmail?.message, error?.message);
   }
-  //onclick
+  //onclick for sign in by google
   const signInByGoogle = () => {
     signInWithGoogle();
   };
+  if (userOfGoog) {
+    navigate(from, { replace: true });
+  }
 
-  //sign in by email and password]
+  //sign in by email and password
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,10 +62,10 @@ const Login = () => {
     if (email && password) {
       signInWithEmailAndPassword(email, password);
     }
+    if (userOfEmail || userOfGoog) {
+      navigate(from, { replace: true });
+    }
   };
-  if (userOfGoog || userOfEmail) {
-    navigate(from, { replace: true });
-  }
   //send password reset email
   const handlePasswordReset = async (e) => {
     e.preventDefault();
@@ -67,6 +75,7 @@ const Login = () => {
     }
     if (email) {
       await sendPasswordResetEmail(email);
+
       toast("Password Reset Email sent.");
     }
   };
@@ -109,7 +118,7 @@ const Login = () => {
           <input
             value="Sign In"
             type="submit"
-            className="block w-full p-3 text-center bg-gray-700 text-white hover:bg-gray-600 rounded-sm"
+            className="block w-full p-3 cursor-pointer text-center bg-gray-700 text-white hover:bg-gray-600 rounded-sm"
           />
         </form>
         <div className="flex items-center pt-4 space-x-1">

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
@@ -42,6 +43,7 @@ const Register = () => {
       }
       await createUserWithEmailAndPassword(email, pass);
       await updateProfile({ displayName: name });
+
       if (user) {
         navigate(from, { replace: true });
       }
