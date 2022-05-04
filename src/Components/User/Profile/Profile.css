@@ -3,3 +3,8 @@
   width: 80%;
   height: 400px;
 }
+@media (max-width: 640px) {
+  .profile {
+    flex-direction: column;
+  }
+}

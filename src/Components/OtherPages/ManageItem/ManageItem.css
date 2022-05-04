@@ -2,3 +2,18 @@
   width: 80%;
   margin: 70px auto;
 }
+@media (max-width: 640px) {
+  .restock input {
+    width: 150px;
+    font-size: 10px;
+  }
+  .product_code {
+    font-size: 10px;
+  }
+  .restock {
+    flex-direction: column;
+  }
+  .button {
+    flex-direction: column;
+  }
+}

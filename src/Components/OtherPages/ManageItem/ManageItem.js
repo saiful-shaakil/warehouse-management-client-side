@@ -74,7 +74,7 @@ const ManageItem = () => {
           </div>
           <div className="p-6 text-grey-darker text-justify flex flex-col">
             <img src={img} className="w-64 flex self-center shadow-lg mb-6" />
-            <p className="font-bold text-sm uppercase mb-2 text-blue-darker">
+            <p className="font-bold text-sm product_code uppercase mb-2 text-blue-darker">
               Product Code: {_id}
             </p>
             <p className="font-bold text-sm uppercase mb-2 text-blue-darker">
@@ -96,7 +96,7 @@ const ManageItem = () => {
               </span>
             </div>
           </div>
-          <div className="p-6 text-grey-darker text-justify flex sm:flex-col lg:flex-row md:justify-between border-t">
+          <div className="p-6 text-grey-darker button text-justify flex sm:flex-col lg:flex-row md:justify-between border-t">
             <button
               type="button"
               onClick={() => deliverItem(_id)}
@@ -104,7 +104,7 @@ const ManageItem = () => {
             >
               Deliver Now
             </button>
-            <div className="flex md:flex-row sm:flex-col sm:justify-center sm:items-center">
+            <div className="flex md:flex-row sm:flex-col restock sm:justify-center sm:items-center">
               <div>
                 <input
                   ref={getItem}
