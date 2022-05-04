@@ -16,4 +16,11 @@
   .button {
     flex-direction: column;
   }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .info span {
+    margin-top: 10px;
+  }
 }

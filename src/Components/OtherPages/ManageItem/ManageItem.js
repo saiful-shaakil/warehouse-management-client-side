@@ -81,7 +81,7 @@ const ManageItem = () => {
               Model: {model}
             </p>
             <span className="text-grey-darker">{desc}</span>
-            <div className="pt-4">
+            <div className="pt-4 info">
               <span className="uppercase bg-yellow-dark text-grey-darkest font-bold p-2 text-xs shadow rounded">
                 ${price}
               </span>
